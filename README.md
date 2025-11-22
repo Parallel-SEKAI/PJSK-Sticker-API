@@ -223,7 +223,7 @@ else:
 - `font_size`: 字体大小，默认为 50
 - `stroke_color`: 文本描边颜色RGB值，默认为 [255, 255, 255]
 - `stroke_width`: 文本描边宽度，默认为 4
-- `font_path`: 字体文件路径，未提供时自动选择
+- `font_path`: 字体文件路径，未提供时自动选择，可选 `YurukaStd` 和 `ShangShouFangTangTi`
 - `rotation_angle`: 文本旋转角度，默认为 15
 
 **响应**:
@@ -245,7 +245,7 @@ else:
 - `font_size`: 字体大小，默认为 50
 - `stroke_color`: 文本描边颜色RGB值，默认使用重复参数
 - `stroke_width`: 文本描边宽度，默认为 4
-- `font_path`: 字体文件路径，未提供时自动选择
+- `font_path`: 字体文件路径，未提供时自动选择，可选 `YurukaStd` 和 `ShangShouFangTangTi`
 - `rotation_angle`: 文本旋转角度，默认为 15
 
 **响应**:
@@ -307,7 +307,6 @@ python ci.py
 ## 致谢
 
 - [SEGA/プロセカ](https://pjsekai.sega.jp/) - Project Sekai 官方
-- [xiaocaoooo/pjsk-sticker](https://github.com/xiaocaoooo/pjsk-sticker) - 灵感来源
 - [sszzz830/Project_Sekai_Stickers_QQBot](https://github.com/sszzz830/Project_Sekai_Stickers_QQBot)
 - [TheOriginalAyaka/sekai-stickers](https://github.com/TheOriginalAyaka/sekai-stickers)
 

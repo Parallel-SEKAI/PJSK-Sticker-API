@@ -1,4 +1,6 @@
-from typing import Optional, Tuple
+import difflib
+from pathlib import Path
+from typing import Dict, Optional, Tuple
 
 import uvicorn
 from fastapi import FastAPI, HTTPException, Query
@@ -19,6 +21,11 @@ app = FastAPI(
     description="一个用于生成 PJSK 风格表情包图片的 API，支持 GET 和 POST 请求。",
     version="1.1.0",
 )
+
+
+FONTS: Dict[str, str] = {
+    font.stem.lower(): str(font) for font in Path("assets/fonts").glob("*")
+}
 
 
 # 2. 定义 POST 请求体的数据模型
@@ -58,6 +65,14 @@ async def _generate_and_respond(params: dict) -> FileResponse:
     内部函数：调用生成器并处理响应和异常。
     """
     try:
+        params["character"] = params["character"].lower()
+        if "font_path" in params and params["font_path"] is not None:
+            params["font_path"] = FONTS.get(
+                difflib.get_close_matches(
+                    params["font_path"].lower(), FONTS.keys(), n=1
+                )[0],
+                None,
+            )
         # 调用generator.py中的generate函数
         image_path = generator.generate(**params)
         # 使用FileResponse将生成的图片文件作为响应返回
