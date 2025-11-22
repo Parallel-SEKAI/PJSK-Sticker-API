@@ -93,7 +93,7 @@ jobs:
           docker run -d --name pjsk-test -p 8000:8000 pjsk-sticker-api:latest
 
           # 等待服务启动
-          sleep 30
+          sleep 10
 
           # 打印容器的日志以进行调试
           echo "---- Docker Container Logs ----"
@@ -101,7 +101,7 @@ jobs:
           echo "-------------------------------"
 
           # 测试API是否正常运行
-          curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/ | grep -q 200
+          curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/docs | grep -q 200
           result=$?
 
           # 清理测试容器
