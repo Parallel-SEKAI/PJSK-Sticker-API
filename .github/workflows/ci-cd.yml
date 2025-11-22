@@ -8,6 +8,9 @@ on:
   # 允许手动触发工作流
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   lint-and-test:
     name: Code Quality Check
