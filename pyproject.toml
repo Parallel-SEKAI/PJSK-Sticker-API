@@ -1,0 +1,29 @@
+[project]
+name = "pjsk-sticker-api"
+version = "1.0.0"
+description = "Project Sekai Sticker Maker API / PJSK表情包生成器API"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.121.3",
+    "pillow>=12.0.0",
+    "uvicorn[standard]>=0.38.0",
+]
+
+
+[project.optional-dependencies]
+dev = [
+    # "pytest>=9.0.1",
+    "pytest-cov>=7.0.0",
+    "black>=25.11.0",
+    "flake8>=7.3.0",
+    "isort>=7.0.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["enana*"]
+
+[tool.black]
+line-length = 79
+target-version = ['py313']

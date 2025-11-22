@@ -1,0 +1,24 @@
+# Docker Compose 配置文件 - 无版本声明，符合最新规范
+
+services:
+  pjsk-sticker-api:
+    build: .
+    container_name: pjsk-sticker-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"  # 将容器的8000端口映射到宿主机的8000端口
+    volumes:
+      - ./assets:/app/assets  # 挂载资源文件目录
+      - sticker-output:/tmp/pjsk_sticker  # 挂载输出目录以持久化保存生成的图片
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  sticker-output:  # 定义持久化卷
