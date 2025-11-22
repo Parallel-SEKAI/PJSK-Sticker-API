@@ -226,7 +226,9 @@ def generate(
     # 7. 确定输出路径（如果未提供）
     final_output_path = output_path
     if final_output_path is None:
-        final_output_path = f"{tempfile.gettempdir()}/pjsk_sticker/{time()}.png"
+        final_output_path = (
+            f"{tempfile.gettempdir()}/pjsk_sticker/{time()}.png"
+        )
         os.makedirs(os.path.dirname(final_output_path), exist_ok=True)
 
     # 8. 调用核心生成函数
